@@ -1,0 +1,39 @@
+h1
+{
+    text-align: center;
+    font-family: 'Shantell Sans', serif;
+    background-color: darkkhaki;
+    color: blueviolet;
+    text-shadow: 3px 3px 1px yellowgreen;  
+}
+q
+{
+    text-align: left;
+    font-family: 'Labrada', serif;
+    /* background-color: rgba(181, 24, 224, 0.762); */
+    color: chocolate;
+    text-shadow: 3px 3px 1px black;  
+    /*第一个像素值设置阴影与文本的水平偏移量：它移动的距离。
+    第二个像素值设置阴影与文本的垂直偏移量：它向下移动的距离。
+    第三个像素值设置阴影的模糊半径。值越大，阴影越模糊。
+    第四个值设置阴影的基色。 */
+}
+body
+{
+    background-color: antiquewhite;
+    padding: 5%;
+    border: 30px solid blue;  /*设置边框的宽度、样式和值 */
+    margin: 5% ;
+}
+p,
+li {
+    color: blueviolet;
+    font-family: 'Zeyada', serif;
+}
+#tips{
+    color: red;
+}
+img{
+    display: block;
+    margin: 10px;
+}
