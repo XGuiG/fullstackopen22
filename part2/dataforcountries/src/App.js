@@ -33,6 +33,10 @@ const Weather = ({ country }) => {
     });
   },[]);
   console.log(weather);
+  // 如果 weather 数据没有获取到，返回空组件
+  // if (!weather) {
+  //   return null
+  // }
 
   // useEffect(() => {
   //   fetch(apiUrl)
