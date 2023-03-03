@@ -25,14 +25,14 @@ const Weather = ({ country }) => {
   console.log(apiUrl);
 
   useEffect(() => {
-    console.log("effect");
+    // console.log("effect");
     axios.get(apiUrl).then((response) => {
-      console.log("promise fulfilled");
+      // console.log("promise fulfilled");
       setWeather(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
   },[]);
-  console.log(weather);
+  // console.log(weather);
   // 如果 weather 数据没有获取到，返回空组件
   // if (!weather) {
   //   return null
