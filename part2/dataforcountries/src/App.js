@@ -65,6 +65,7 @@ const Country = ({ country }) => {
       <p>capital: {country.capital}</p>
       <p>area: {country.area}</p>
       <h3>languages:</h3>
+      //Object.values(country.languages)
       {Object.keys(country.languages).map((key) => (
         <li key={key}>{country.languages[key]}</li>
       ))}
