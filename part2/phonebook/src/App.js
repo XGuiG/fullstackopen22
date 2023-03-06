@@ -150,6 +150,12 @@ const App = () => {
             setTimeout(() => {
               setSendMessage(null);
             }, 5000);
+          })
+          .catch((error) => {
+            setErrorMessage(error.response.data.error);
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
           });
       }
     };
@@ -172,6 +178,12 @@ const App = () => {
           setSendMessage(`Added ${newName}`);
           setTimeout(() => {
             setSendMessage(null);
+          }, 5000);
+        })
+        .catch((error) => {
+          setErrorMessage(error.response.data.error);
+          setTimeout(() => {
+            setErrorMessage(null);
           }, 5000);
         });
       // console.log('add')
