@@ -173,6 +173,7 @@ const App = () => {
         .then((returnedPerson) => {
           setPersons(persons.concat(returnedPerson));
           setNewName("");
+          setNewNumber("");
         })
         .then(() => {
           setSendMessage(`Added ${newName}`);
