@@ -2,10 +2,9 @@ import { useContext } from "react";
 import { useQueryClient, useMutation } from "react-query";
 import NotificationContext from "../Context";
 import { updateVotes } from "../requests";
-import { NotificationReducer } from "./Notification";
 
 const AnecdoteList = ({ anecdotes }) => {
-  const [notification, dispatch] = useContext(NotificationContext);
+  const [_, dispatch] = useContext(NotificationContext);
   const queryClient = useQueryClient();
   const updateVoteMutation = useMutation(updateVotes, {
     onSuccess: () => {

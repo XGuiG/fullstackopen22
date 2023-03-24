@@ -1,4 +1,4 @@
-import { useContext, useReducer } from "react";
+import { useContext } from "react";
 import NotificationContext from "../Context";
 
 export const NotificationReducer = (state, action) => {

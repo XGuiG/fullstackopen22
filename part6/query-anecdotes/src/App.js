@@ -3,16 +3,8 @@ import Notification from "./components/Notification";
 import { useQuery } from "react-query";
 import { getAnecdotes } from "./requests";
 import AnecdoteList from "./components/AnecdoteList";
-import { useReducer } from "react";
-import { NotificationReducer } from "./components/Notification";
-import NotificationContext from "./Context";
 
 const App = () => {
-  const [notification, notificationDispatch] = useReducer(
-    NotificationReducer,
-    null
-  );
-
   const result = useQuery("anecdotes", getAnecdotes, { retry: 1 });
 
   if (result.isError) {
@@ -25,13 +17,9 @@ const App = () => {
   return (
     <div>
       <h3>Anecdote app</h3>
-      <NotificationContext.Provider
-        value={[notification, notificationDispatch]}
-      >
-        <Notification />
-        <AnecdoteForm />
-        <AnecdoteList anecdotes={anecdotes} />
-      </NotificationContext.Provider>
+      <Notification />
+      <AnecdoteForm />
+      <AnecdoteList anecdotes={anecdotes} />
     </div>
   );
 };
