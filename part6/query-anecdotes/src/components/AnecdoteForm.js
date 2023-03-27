@@ -4,11 +4,11 @@ import NotificationContext from "../Context";
 import { createAnecdote } from "../requests";
 
 const AnecdoteForm = () => {
-  const [_, dispatch] = useContext(NotificationContext)
+  const [_, dispatch] = useContext(NotificationContext);
   const queryClient = useQueryClient();
   const newAnecdoteMutation = useMutation(createAnecdote, {
-    onError: error => {
-      dispatch({type:"ERROR",errorMessage:error.response.data.error})
+    onError: (error) => {
+      dispatch({ type: "ERROR", errorMessage: error.response.data.error });
     },
     onSuccess: () => {
       queryClient.invalidateQueries("anecodotes");
@@ -21,7 +21,7 @@ const AnecdoteForm = () => {
     const content = event.target.anecdote.value;
     event.target.anecdote.value = "";
     newAnecdoteMutation.mutate({ content, id: getId(), votes: 0 });
-    dispatch({type: 'CREATE', anecdote: content});
+    dispatch({ type: "CREATE", anecdote: content });
   };
 
   return (

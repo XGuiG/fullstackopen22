@@ -1,0 +1,56 @@
+.message {
+    color: green;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+h1 {
+    font-family: 'Lobster', serif;
+}
+
+h2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h3 {
+    font-family: 'Merriweather', serif;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+div {
+    font-size: 100%;
+}
+
+Navbar {
+    border-style: solid;
+    border-radius: 5px;
+}
+
+button {
+    font-size: 14px;
+    border-radius: 4px;
+    background-color: rgba(69, 118, 215, 0.797);
+    border: 2px solid #008CBA;
+}
+
+button:hover {
+    background-color: white;
+}
+
