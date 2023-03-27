@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createComments, LikeOf, RemoveOf } from "../reducers/blogReducer";
-import { notificationToShow } from "./Notification";
+import { notificationToShow } from "../reducers/notificationReducer";
 
 const Blog = ({ blog, user, blogs }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   if (!blog) {
     return null;
@@ -13,7 +13,12 @@ const Blog = ({ blog, user, blogs }) => {
   const updateLike = (blog) => {
     console.log("like", blog.id);
     dispatch(LikeOf(blog, blogs));
-    dispatch(notificationToShow(`you liked '${blog.title}'`));
+    dispatch(
+      notificationToShow({
+        message: `you liked '${blog.title}'`,
+        type: "success",
+      })
+    );
   };
 
   const removeBlog = (blog) => {
@@ -22,11 +27,12 @@ const Blog = ({ blog, user, blogs }) => {
     );
     if (ok) {
       dispatch(RemoveOf(blog, blogs));
-      navigate('/')
+      navigate("/");
       dispatch(
-        notificationToShow(
-          `Removed blog '${blog.title}' by '${blog.author}'`
-        )
+        notificationToShow({
+          message: `Removed blog '${blog.title}' by '${blog.author}'`,
+          type: "success",
+        })
       );
     }
   };
@@ -41,31 +47,41 @@ const Blog = ({ blog, user, blogs }) => {
     event.target.comment.value = "";
     dispatch(createComments(newObject, blogs));
     dispatch(
-      notificationToShow(`added comment '${comment}' to '${blog.title}'`)
+      notificationToShow({
+        message: `added comment '${comment}' to '${blog.title}'`,
+        type: "success",
+      })
     );
   };
 
   return (
     <div>
-      <h1>blog app</h1>     
-      <h3>{blog.title}</h3>
-      <a href={`${blog.url}`}>{blog.url}</a>
+      <h1>blog app</h1>
       <br></br>
-      {blog.likes} likes
-      <button onClick={() => updateLike(blog)}>like</button> <br></br>
-      added by {blog.user.username}
-      <br></br>
-      {user.username === blog.user.username ? (
-        <button onClick={() => removeBlog(blog)}>remove</button>
-      ) : (
-        ""
-      )}
-      <h3>comments</h3>
+      <h3>
+        <strong>{blog.title}</strong>
+      </h3>
+      <p>
+        <a href={`${blog.url}`}>{blog.url}</a>
+      </p>
+      <p>
+        {blog.likes} likes
+        <button onClick={() => updateLike(blog)}>like</button>
+      </p>
+      <p>added by {blog.user.username}</p>
+      <p>
+        {user && user.username === blog.user.username ? (
+          <button onClick={() => removeBlog(blog)}>remove</button>
+        ) : (
+          <button disabled="disabled">remove</button>
+        )}
+      </p>
+      <h3>
+        <strong>comments</strong>
+      </h3>
       <form onSubmit={addComments}>
         <input name="comment" />
-        <button type="submit">
-          add comment
-        </button>
+        <button type="submit">add comment</button>
       </form>
       <div>
         <br></br>

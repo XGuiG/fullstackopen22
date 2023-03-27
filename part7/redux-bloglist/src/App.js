@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import blogService from "./services/blogs";
-import LoginForm from "./components/LoginForm";
 import Footer from "./components/Footer";
 import { initialBlogs } from "./reducers/blogReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { initialUsers, SignedUser } from "./reducers/userReducer";
+import { initialUsers } from "./reducers/userReducer";
 import Menu from "./components/Menu";
 import { useMatch } from "react-router-dom";
 
@@ -48,7 +47,7 @@ const App = () => {
     : null;
 
   return (
-    <div className="container" >
+    <div className="container">
       <Menu
         showUser={showUser}
         blog={blog}

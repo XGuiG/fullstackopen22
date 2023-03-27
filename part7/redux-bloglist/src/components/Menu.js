@@ -19,9 +19,6 @@ const Menu = ({
   const padding = {
     paddingRight: 5,
   };
-  if (!user) {
-    return <LoginForm setUser={setUser} />;
-  }
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -38,17 +35,30 @@ const Menu = ({
                 users
               </Link>
             </Nav.Link>
+            <Nav.Link href="#" as="span">
+              {user ? (
+                <div>
+                  <em style={padding}>{user.name} logged in</em>
+                  <Button onClick={handleLogout} variant="secondary">
+                    logout
+                  </Button>
+                </div>
+              ) : (
+                <div>
+                  <Link style={padding} to="/login">
+                    login
+                  </Link>
+                </div>
+              )}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand href="#">user '{user.name}' logged in </Navbar.Brand>
-        <Button onClick={handleLogout} variant="secondary">
-          logout
-        </Button>
+        {/* <Navbar.Brand href="#">user '{user.name}' logged in </Navbar.Brand> */}
       </Navbar>
       <Notification />
       <Routes>
         <Route path="/login" element={<LoginForm setUser={setUser} />} />
-        <Route path="/" element={<BlogForm blogs={blogs} />} />
+        <Route path="/" element={<BlogForm user={user} blogs={blogs} />} />
         <Route path="/users" element={<UserForm users={users} />} />
         <Route path="/users/:id" element={<User user={showUser} />} />
         <Route

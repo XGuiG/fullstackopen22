@@ -32,6 +32,7 @@ h3 {
 
 p {
     font-family: 'Times New Roman', Times, serif;
+    font-size: 18px
 }
 
 div {
@@ -46,11 +47,6 @@ Navbar {
 button {
     font-size: 14px;
     border-radius: 4px;
-    background-color: rgba(69, 118, 215, 0.797);
+    background-color: rgba(121, 160, 237, 0.797);
     border: 2px solid #008CBA;
 }
-
-button:hover {
-    background-color: white;
-}
-

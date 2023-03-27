@@ -52,7 +52,7 @@ export const LikeOf = (blog, blogs) => {
 
 export const RemoveOf = (blog, blogs) => {
   return async (dispatch) => {
-    const RemovedBlog = await blogService.remove(blog.id);
+    const RemovedBlog = await blogService.remove(blog);
     dispatch(setBlogs(blogs.filter((b) => b.id !== RemovedBlog.id)));
   };
 };
@@ -62,15 +62,13 @@ export const createComments = (blog, blogs) => {
     const ChangedBlog = await blogService.addComments({ ...blog });
     dispatch(
       setBlogs(
-        blogs
-          .map((b) => {
-            if (b.id === ChangedBlog.id) {
-              const blog = { ...b, comments: ChangedBlog.comments };
-              return blog;
-            }
-            return b;
-          })
-          .sort((a, b) => b.likes - a.likes)
+        blogs.map((b) => {
+          if (b.id === ChangedBlog.id) {
+            const blog = { ...b, comments: ChangedBlog.comments };
+            return blog;
+          }
+          return b;
+        })
       )
     );
   };

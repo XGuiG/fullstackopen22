@@ -1,24 +1,38 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { notificationToShow } from "../reducers/notificationReducer";
 
 const Togglable = (props) => {
   const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
 
   const hideWhenVisible = { display: visible ? "none" : "" };
   const showWhenVisible = { display: visible ? "" : "none" };
 
   const toggleVisibility = () => {
-    setVisible(!visible);
+    if (!props.user) {
+      dispatch(
+        notificationToShow({
+          message:
+            "you can only create new blog when signed in, click login to sign you account",
+          type: "warning",
+        })
+      );
+    } else {
+      setVisible(!visible);
+    }
   };
 
   return (
     <div>
-      <button style={hideWhenVisible} onClick={toggleVisibility}>
+      <Button style={hideWhenVisible} onClick={toggleVisibility}>
         {props.buttonLabel}
-      </button>
+      </Button>
       <div style={showWhenVisible}>
         {props.children}
-        <button onClick={toggleVisibility}>cancel</button>
+        <Button onClick={toggleVisibility}>cancel</Button>
       </div>
     </div>
   );

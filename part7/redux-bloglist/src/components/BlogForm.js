@@ -3,7 +3,7 @@ import Togglable from "./Togglable";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 
-const BlogForm = ({ blogs }) => {
+const BlogForm = ({ blogs, user }) => {
   // const blogStyle = {
   //   paddingTop: 10,
   //   paddingLeft: 2,
@@ -15,7 +15,7 @@ const BlogForm = ({ blogs }) => {
   return (
     <div>
       <h1>blog app</h1>
-      <Togglable buttonLabel="create new blog">
+      <Togglable buttonLabel="create new blog" user={user}>
         <NewBlog />
       </Togglable>
       <br></br>
