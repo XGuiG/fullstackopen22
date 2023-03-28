@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { notificationToShow } from "../reducers/notificationReducer";
 
-const Togglable = (props) => {
+const Togglable = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false);
   const dispatch = useDispatch();
 
@@ -25,6 +25,10 @@ const Togglable = (props) => {
     }
   };
 
+  useImperativeHandle(ref, () => {
+    return { toggleVisibility };
+  });
+
   return (
     <div>
       <Button style={hideWhenVisible} onClick={toggleVisibility}>
@@ -36,7 +40,7 @@ const Togglable = (props) => {
       </div>
     </div>
   );
-};
+});
 
 Togglable.displayName = "Togglable";
 

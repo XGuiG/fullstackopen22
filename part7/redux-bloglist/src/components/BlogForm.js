@@ -3,7 +3,7 @@ import Togglable from "./Togglable";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 
-const BlogForm = ({ blogs, user }) => {
+const BlogForm = ({ blogs, user, blogFormRef }) => {
   // const blogStyle = {
   //   paddingTop: 10,
   //   paddingLeft: 2,
@@ -15,8 +15,8 @@ const BlogForm = ({ blogs, user }) => {
   return (
     <div>
       <h1>blog app</h1>
-      <Togglable buttonLabel="create new blog" user={user}>
-        <NewBlog />
+      <Togglable buttonLabel="create new blog" user={user} ref={blogFormRef}>
+        <NewBlog hideMe={() => blogFormRef.current.toggleVisibility()} />
       </Togglable>
       <br></br>
       <Table striped>

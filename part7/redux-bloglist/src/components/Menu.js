@@ -15,6 +15,7 @@ const Menu = ({
   setUser,
   users,
   handleLogout,
+  blogFormRef
 }) => {
   const padding = {
     paddingRight: 5,
@@ -38,7 +39,7 @@ const Menu = ({
             <Nav.Link href="#" as="span">
               {user ? (
                 <div>
-                  <em style={padding}>{user.name} logged in</em>
+                  <em style={padding}>{user.username} logged in</em>
                   <Button onClick={handleLogout} variant="secondary">
                     logout
                   </Button>
@@ -58,7 +59,10 @@ const Menu = ({
       <Notification />
       <Routes>
         <Route path="/login" element={<LoginForm setUser={setUser} />} />
-        <Route path="/" element={<BlogForm user={user} blogs={blogs} />} />
+        <Route
+          path="/"
+          element={<BlogForm user={user} blogs={blogs} blogFormRef={blogFormRef} />}
+        />
         <Route path="/users" element={<UserForm users={users} />} />
         <Route path="/users/:id" element={<User user={showUser} />} />
         <Route

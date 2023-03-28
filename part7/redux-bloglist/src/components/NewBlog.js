@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { createBlog } from "../reducers/blogReducer";
 import { notificationToShow } from "../reducers/notificationReducer";
 
-const NewBlog = () => {
+const NewBlog = ({ hideMe }) => {
   const dispatch = useDispatch();
   const addBlog = async (event) => {
     event.preventDefault();
@@ -22,6 +22,7 @@ const NewBlog = () => {
     event.target.author.value = "";
     event.target.url.value = "";
     dispatch(createBlog(newObject));
+    hideMe();
     dispatch(
       notificationToShow({
         message: `'${newObject.title}' added`,

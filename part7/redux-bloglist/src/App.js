@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import blogService from "./services/blogs";
 import Footer from "./components/Footer";
 import { initialBlogs } from "./reducers/blogReducer";
@@ -12,6 +12,8 @@ const App = () => {
   const users = useSelector((state) => state.users);
   const blogs = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
+  const blogFormRef = useRef();
+
   useEffect(() => {
     dispatch(initialBlogs());
   }, []);
@@ -56,6 +58,7 @@ const App = () => {
         setUser={setUser}
         users={users}
         handleLogout={handleLogout}
+        blogFormRef={blogFormRef}
       />
       <Footer />
     </div>
