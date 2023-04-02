@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useField } from "../hooks";
-import { ALL_BOOKS } from "../queries";
+import { ALL_AUTHORS, ALL_BOOKS } from "../queries";
 import { CREATE_BOOK } from "../queries";
 import { updateCache } from "../App";
 
@@ -14,7 +14,11 @@ const NewBook = () => {
   const [genres, setGenres] = useState([]);
   const navigate = useNavigate();
 
-  const [createBook, result] = useMutation(CREATE_BOOK, {
+  const [createBook] = useMutation(CREATE_BOOK, {
+    refetchQueries: [{ query: ALL_AUTHORS }, { query: ALL_BOOKS }],
+    onCompleted: () => {
+      navigate("/books");
+    },
     update: (cache, response) => {
       updateCache(cache, { query: ALL_BOOKS }, response.data.addBook);
     },
