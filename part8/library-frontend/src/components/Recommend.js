@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/client";
 import { FAVORITE_GENRE } from "../queries";
-import { useState } from "react";
 
 const Recommend = () => {
   const result = useQuery(FAVORITE_GENRE)

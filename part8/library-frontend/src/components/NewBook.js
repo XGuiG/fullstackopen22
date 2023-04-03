@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useField } from "../hooks";
 import { ALL_AUTHORS, ALL_BOOKS } from "../queries";
